@@ -1,0 +1,149 @@
+\documentclass[twocolumn,11pt]{article}
+\setlength{\textheight}{9truein}
+\setlength{\topmargin}{-0.9truein}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+\setlength{\columnsep}{.4in}
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+%
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{url}
+\usepackage{cuted}
+%
+\title{Week 1 - Outline}
+\author{Thomas Kilmer}
+\date{27 Oct 2016}
+%
+%
+\begin{document}
+ \twocolumn[
+   \begin{@twocolumnfalse}
+   \maketitle
+   \setlength{\parindent}{0pt}
+   \begin{abstract} The question this paper seeks to answer is: at what telescope sensitivity does signal subtraction become more useful than signal deletion? 
+   
+  \vspace{.3in} 
+     \end{abstract}
+    \end{@twocolumnfalse}]
+
+
+\section*{Resolvable Fraction of Sources as a Function of Redshift}
+
+The first step to determining the efficacy of either signal deletion or signal subtraction is determining what fraction of resolvable sources can be detected with a given redshift sensitivity (Fig \ref{fig:Rfrac}). This relationship can be found in Eq \ref{eq:Rfrac0}.
+
+\beq
+Rfrac[z] = \int_{0}^{z} PDFfrac[z] dz
+\label{eq:Rfrac0}
+\eeq
+
+$PDFfrac[z]$ (Fig \ref{fig:PDFfrac}) is the probability distribution function defining what portion of resolvable sources can be found at a given redshift $z$. 
+
+$PDFfrac[z]$ can be derived as the integrand of the signal density of resolvable sources divided by the signal density of resolvable sources (which is an integral over all redshift for which gravitational waves can be detected). The signal density of resolvable sources as solved for in \cite{1112.1898}, shown in Eq \ref{eq:signal_density}.
+
+{\tiny
+\beq
+\Omega_{g \omega}(f) = \frac{8 \lambda (\pi G M_c)^{5/3}}{9 H_0^3 c^2} f^{2/3} \int_{z_{min}}^{z_{max}} \frac{R_V[z] dz}{(1+z)^{1/3} E[\Omega_M, \Omega_{\Lambda}, z]}
+\label{eq:signal_density}
+\eeq}
+
+The constant terms and f (frequency) are irrelevant because they cancel out in $PDFfrac[z]$, $z_{min}$ and $z_{max}$ are equal to 0 and 6 respectively (6 redshift being the edge of the observable universe), $E[\Omega_M, \Omega_{\Lambda}, z]$ is a factor to account for the dependence of comoving volume on redshift, and $R_V{z}$ is the observed rate of binary coalescence. 
+
+$E[\Omega_M, \Omega_{\Lambda}, z]$ is further defined in \cite{1112.1898}, shown in Eq \ref{eq:comoving}. 
+
+\beq
+E[\Omega_M, \Omega_{\Lambda}, z] = \sqrt{\Omega_M (1+z^3) + \Omega_{\Lambda}}
+\label{eq:comoving}
+\eeq
+
+For the constants in $E[\Omega_M, \Omega_{\Lambda}, z]$ we use the standard $\Lambda$CDM cosmology values of $\Omega_M = 0.3$, $\Omega_{\Lambda} = 0.7$, and $H_0 = 70 \frac{km}{Mpc*s}$. 
+
+$R_V[z]$ is described in \cite{1602.04531}, shown in Eq \ref{eq:Rv}.
+
+\beq
+R_V[z] = 0.015 \frac{(1+z)^{2.7}}{1 + [\frac{1+z}{2.9}]^{5.6}} \frac{M_{\odot}}{Mpc^3yr}
+\label{eq:Rv}
+\eeq
+
+All of which allows us to describe formally describe $PDFfrac[z]$ and thus $Rfrac[z]$ in Eq \ref{eq:PDFfrac} and Eq \ref{eq:Rfrac}.
+
+{\scriptsize
+\beq
+PDFfrac[z] = \frac{0.1497 (1+z)^{2.37}}{(1 + [\frac{1+z}{2.9}]^{5.6}) \sqrt{0.3 (1+z)^3 + 0.7}}
+\label{eq:PDFfrac}
+\eeq
+
+\beq
+Rfrac[z] = \int_{0}^{z} \frac{0.1497 (1+z')^{2.37} dz'}{(1 + [\frac{1+z'}{2.9}]^{5.6}) \sqrt{0.3 (1+z')^3 + 0.7}}
+\label{eq:Rfrac}
+\eeq}
+
+\begin{figure}[!h!t]
+	\centering
+	\includegraphics[width=3in]{PDFfrac.pdf}
+	\caption{Equation \ref{eq:PDFfrac}}
+	\label{fig:PDFfrac}
+\end{figure} 
+
+\begin{figure}[!h!t]
+	\centering
+	\includegraphics[width=3in]{Rfrac.pdf}
+	\caption{Equation \ref{eq:Rfrac}}
+	\label{fig:Rfrac}
+\end{figure} 
+
+This, combined with an estimate of the total number of sources in space and the fraction of those we can resolve, will tell us how many sources we can expect to observe with a telescope of redshift sensitivity $z$. 
+
+\section*{Signal Strength as a Function of Frequency}
+
+The number of observed sources does not translate nicely to the efficacy of signal deletion however. The efficacy of signal subtraction is determined by the fraction of data in which we observe a distinguishable signal, which is in turn defined by the length of time each signal lasts. And in gravitational wave astronomy signal length is not constant with respect to telescope sensitivity. 
+
+The signal density of resolvable sources (Eq \ref{eq:signal_density}) contains an amplitude term as a function of $M_c$ (chirp mass) and $f$ (frequency). The dependence on frequency is of particular note because signal length is dependent on frequency. So if a telescope lowers the minimum signal amplitude it can detect it will pick up a different population of signal frequencies which will create a different population of signal lengths. 
+
+All of which means we want to know what that amplitude term is, and it shows up in (Eq \ref{eq:signal_density}) as Eq \ref{eq:h_naive}.
+
+\beq
+h[MC,f] = M_c^{5/3} f^{2/3}
+\label{eq:h_naive}
+\eeq
+
+There is a further catch in determining the amplitude term though, a hidden dependence $f$ has on $M_c$. The maximum frequency a coalescing binary can produce is the inverse of the chirp mass of the binary, $f_{max} = \frac{1}{M_c}$. Including this hidden dependence in the amplitude term we get Eq \ref{eq:heavyside}.
+
+\beq
+h[MC,f] = M_c^{5/3} f^{2/3} (1-\mathcal{H}(f-\frac{1}{M_c}))
+\label{eq:heavyside}
+\eeq
+
+$\mathcal{H}(x)$ is the Heavyside function with respect to x. Eq \ref{eq:heavyside} is plotted for various chirp masses in Fig \ref{fig:heavyside}.
+
+\begin{figure}[!h!t]
+	\centering
+	\includegraphics[width=3in]{Heavyside.pdf}
+	\caption{Equation \ref{eq:heavyside}}
+	\label{fig:heavyside}
+\end{figure} 
+
+Eq \ref{eq:heavyside} is still inadequate though. In reality the signal strength drop-off is not a vertical line at a set frequency. 
+
+
+\begin{thebibliography}{1}
+
+\bibitem{1112.1898}
+Chengjian Wu, Vuk Mandic and Tania Regimbau.
+\newblock Accessibility of the Gravitational-Wave Background due to Binary Coalescences to Second and Third Generation Gravitational-Wave Detectors, 2011;
+\newblock arXiv:1112.1898.
+\newblock DOI: 10.1103/PhysRevD.85.104024.
+
+\bibitem{1602.04531}
+Krzysztof Belczynski, Daniel E. Holz, Tomasz Bulik and Richard O'Shaughnessy.
+\newblock The first gravitational-wave source from the isolated evolution of two 40-100 Msun stars, 2016;
+\newblock arXiv:1602.04531.
+\newblock DOI: 10.1038/nature18322.
+
+
+
+
+\end{thebibliography}
+\end{document}
