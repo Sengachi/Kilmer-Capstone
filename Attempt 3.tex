@@ -1,0 +1,233 @@
+\documentclass[twocolumn,11pt]{article}
+\setlength{\textheight}{9truein}
+\setlength{\topmargin}{-0.9truein}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+\setlength{\columnsep}{.4in}
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+%
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{url}
+\usepackage{cuted}
+%
+\title{Week 1 - Outline}
+\author{Thomas Kilmer}
+\date{27 Oct 2016}
+%
+%
+\begin{document}
+ \twocolumn[
+   \begin{@twocolumnfalse}
+   \maketitle
+   \setlength{\parindent}{0pt}
+   \begin{abstract} The question this paper seeks to answer is: at what telescope sensitivity does signal subtraction become more useful than signal deletion? 
+   
+  \vspace{.3in} 
+     \end{abstract}
+    \end{@twocolumnfalse}]
+
+
+\section*{Introduction}
+
+Advanced LIGO recently detected gravitational waves from a binary black hole merger \cite{1602.03837}. While estimates for the number of coalescing binary black holes in the universe are imprecise, there are many such binaries \cite{0912.1074}. This large number of binary black holes produces overlapping, incoherent signals which form a ``background'' of gravitational waves \cite{1604.02513}. This background is statistically homogeneous and isotropic, despite the discrete nature of the sources which make it up \cite{1604.02513}. With current advances in gravitational wave detection this background will be measured within the next few years \cite{1604.02513}.
+
+Binary black holes are not the only thing which contribute to the gravitational wave background. A number of other astrophysical sources contribute to the background including rotating neutron stars \cite{1206.1330}, neutron star phase transitions \cite{Marranghello}, instabilities in young neutron stars \cite{1106.2736}, and core collapse supernovae \cite{astro-ph/0412277}. There are also cosmological sources which contribute to the gravitational wave background including pre-Big Bang cosmological factors \cite{hep-th/9211021} \cite{hep-th/9701146} \cite{1006.0217}, the amplification of weak gravitational waves (including vacuum fluctuations) during inflation \cite{Grishchuk1} \cite{Grishchuk2}, phase transitions in the early universe \cite{0711.2593} \cite{0909.0622} \cite{0901.1661}, and cosmic strings \cite{hep-th/0410222}. The analysis of gravitational waves produced by the aforementioned cosmological sources could provide insight into the early processes of the universe.
+
+However the analysis of the gravitational wave background produced by cosmological sources is complicated by the inability to separate it from the gravitational wave background produced by astrophysical sources \cite{1604.02513}. The goal of this project is to develop tools for separating the cosmological and astrophysical backgrounds to ease the analysis of the cosmological background. More specifically we aim to develop tools for resolving binary black holes.
+
+\section*{Signal Subtraction}
+
+(*Rewrite 'resolving' to better match what we're actually doing, subtraction.*)
+
+Resolving a binary black hole means identifying enough key characteristics of the binary (mass, orientation, location) that one can create a simulation of the gravitational wave signal produced by the binary at any given time. This simulated signal can then be subtracted from total gravitational wave background, leaving a reduced background which is the produced a fraction less by astrophysical sources and a fraction more by cosmological sources. 
+
+No technique will be able to resolve all sources, particularly more distant sources \cite{1604.02513}, as their distance makes it difficult to determine their exact location. This means that the binary black hole background consists of a resolvable background and an unresolvable background \cite{1106.5795}. The success of a technique used to resolve sources can be quantified by what fraction of the background it can resolve and subsequently subtract. That is, a good technique has a small $\lambda$ (Equation \ref{eqn:lambda}). 
+
+\begin{eqnarray}
+\lambda(f) &=& \frac{\Omega_{gw,u}(f)}{\Omega_{gw,u}(f)+\Omega_{gw,r}(f)} 
+\label{eqn:lambda} \\
+\Omega_{gw,u}(f) &:& \textrm{Unresolvable~Signal} \nonumber \\
+\Omega_{gw,r}(f) &:& \textrm{Resolvable~Signal} \nonumber \\
+f &:& \textrm{Signal Frequency} \nonumber
+\end{eqnarray}
+
+Signal subtraction has a complication though. The above equation for $\lambda$ assumes that the simulated signal perfectly matches the actual signal of the resolved source, that there is no residual post-subtraction. This is not a reasonable assumption to make. All of our resolved sources will have imperfectly determined parameters and all of our simulated signals will further suffer from imperfect inspiral models. This means that each subtraction will create a residual in our post-subtraction data that will act as an unresolved signal. A more appropriate definition for the $\lambda$ of signal subtraction includes a residual term (Equation \ref{eqn:lambda_R}.
+
+\begin{eqnarray}
+\lambda(f) &=& \frac{\Omega_{gw,u}(f) + R*\Omega_{gw,r}(f)}{\Omega_{gw,u}(f)+\Omega_{gw,r}(f)} \label{eqn:lambda_R} \\
+\Omega_{gw,u}(f) &:& \textrm{Unresolvable~Signal} \nonumber \\
+\Omega_{gw,r}(f) &:& \textrm{Resolvable~Signal} \nonumber \\
+R &:& \textrm{Subtraction~Residual~Term} \nonumber
+\end{eqnarray}
+
+$R$ is a particularly complicated term. !!!Unfinished!!!
+
+\section*{Signal Deletion}
+
+Signal deletion is similar to signal subtraction, but instead of using simulation and subtraction to remove signals one simply deletes all data that contains a resolvable signal. This has the advantage of not creating a residual, for signal deletion Equation 1 really is a perfectly appropriate way to describe $\lambda$. Signal deletion has a serious disadvantage though: it reduces the amount of data one has to work with. In fact when working with data that has at least one resolvable signal at any given time signal deletion leaves one with no data to work with at all. 
+
+Determining what fraction of one's data one is sacrificing when using signal deletion is difficult. To do so let us begin with the signal density for gravitational waves as described in \cite{1112.1898} (Equation \ref{eq:signal_density}).
+
+{\tiny
+\beq
+\Omega_{g \omega}(f) = \frac{8 \lambda (\pi G M_c)^{5/3}}{9 H_0^3 c^2} f^{2/3} \int_{z_{min}}^{z_{max}} \frac{R_V(z) dz}{(1+z)^{1/3} E[\Omega_M, \Omega_{\Lambda}, z]}
+\label{eq:signal_density} 
+\eeq
+}{\footnotesize
+\begin{eqnarray}
+R_v(z) &:& \textrm{Observed~Rate~of~Binary~Coalescence} \nonumber \\
+E[\Omega_M, \Omega_{\Lambda}, z] &:& \textrm{z-Dependence~of~Comoving~Volume}  \nonumber  \\
+(1+z)^{1/3} &:& \textrm{Comoving~Volume~Term} \nonumber \\
+\frac{8 \lambda (\pi G M_c)^{5/3}}{9 H_0^3 c^2} &:& \textrm{Constant~Factors} \nonumber
+\end{eqnarray}
+}
+
+For now 
+
+
+
+
+\begin{thebibliography}{1}
+
+\bibitem{1112.1898}
+Chengjian Wu, Vuk Mandic and Tania Regimbau.
+\newblock Accessibility of the Gravitational-Wave Background due to Binary Coalescences to Second and Third Generation Gravitational-Wave Detectors, 2011;
+\newblock arXiv:1112.1898.
+\newblock DOI: 10.1103/PhysRevD.85.104024.
+
+\bibitem{1602.04531}
+Krzysztof Belczynski, Daniel E. Holz, Tomasz Bulik and Richard O'Shaughnessy.
+\newblock The first gravitational-wave source from the isolated evolution of two 40-100 Msun stars, 2016;
+\newblock arXiv:1602.04531.
+\newblock DOI: 10.1038/nature18322.
+
+
+
+\bibitem{1602.03837}
+ The LIGO Scientific Collaboration and  the Virgo Collaboration.
+\\ Observation of Gravitational Waves from a Binary Black Hole Merger, 2016,
+\\ Phys. Rev. Lett. 116, 061102 (2016);
+\\ arXiv:1602.03837.
+\\ DOI: 10.1103/PhysRevLett.116.061102.
+
+\bibitem{0912.1074}
+Ilya Mandel and Richard O'Shaughnessy.
+\\ Compact Binary Coalescences in the Band of Ground-based Gravitational-Wave Detectors, 2009,
+\\ Class.Quant.Grav.27:114007,2010;
+\\ arXiv:0912.1074.
+\\ DOI: 10.1088/0264-9381/27/11/114007.
+
+\bibitem{1604.02513}
+Thomas Callister, Letizia Sammut, Eric Thrane, Shi Qiu and Ilya Mandel.
+\\ The limits of astrophysics with gravitational wave backgrounds, 2016;
+\\ arXiv:1604.02513.
+
+\bibitem{1206.1330}
+Pablo A. Rosado.
+\\ Gravitational wave background from rotating neutron stars, 2012,
+\\ Physical Review D 86, 104007 (2012);
+\\ arXiv:1206.1330.
+\\ DOI: 10.1103/PhysRevD.86.104007.
+
+\bibitem{Marranghello}
+G. F. Marranghello.
+\\ Phase Transition In Rotating Neutron Stars
+\\ International Journal of Modern Physics D 2007 16:02n03, 333-339 
+
+\bibitem{1106.2736}
+G. F. Burgio, V. Ferrari, L. Gualtieri and H. J. Schulze.
+\\ Oscillations of hot, young neutron stars: Gravitational wave frequencies and damping times, 2011,
+\\ Phys.Rev.D84:044017,2011;
+\\ arXiv:1106.2736.
+\\ DOI: 10.1103/PhysRevD.84.044017.
+
+\bibitem{astro-ph/0412277}
+Alessandra Buonanno, Guenter Sigl, Georg G. Raffelt, Hans-Thomas Janka and Ewald Mueller.
+\\ Stochastic Gravitational Wave Background from Cosmological Supernovae, 2004,
+\\ Phys.Rev. D72 (2005) 084001;
+\\ arXiv:astro-ph/0412277.
+\\ DOI: 10.1103/PhysRevD.72.084001.
+
+\bibitem{hep-th/9211021}
+M. Gasperini and G. Veneziano.
+\\ Pre-Big-Bang in String Cosmology, 1992,
+\\ Astropart.Phys.1:317-339,1993;
+\\ arXiv:hep-th/9211021.
+\\ DOI: 10.1016/0927-6505(93)90017-8.
+
+\bibitem{hep-th/9701146}
+A. Buonanno, M. Gasperini, M. Maggiore and C. Ungarelli.
+\\ Expanding and contracting universes in third quantized string cosmology, 1997,
+\\ Class.Quant.Grav.14:L97-L103,1997;
+\\ arXiv:hep-th/9701146.
+\\ DOI: 10.1088/0264-9381/14/5/005.
+
+\bibitem{1006.0217}
+Jean-Francois Dufaux, Daniel G. Figueroa and Juan Garcia-Bellido.
+\\ Gravitational Waves from Abelian Gauge Fields and Cosmic Strings at Preheating, 2010,
+\\ Phys.Rev.D82:083518,2010;
+\\ arXiv:1006.0217.
+\\ DOI: 10.1103/PhysRevD.82.083518.
+
+\bibitem{Grishchuk1}
+L.P. Grishchuk.
+\\ Amplification of gravitational waves in an isotropic universe
+\\ JETP, 1975, Vol. 40, No. 3, p. 409
+\\ \url{http://www.jetp.ac.ru/cgi-bin/dn/e_040_03_0409.pdf}
+
+\bibitem{Grishchuk2}
+L. P. Grishchuk.
+\\ Relic gravitational waves and limits on inflation
+\\ Phys. Rev. D 48, 3513 – Published 15 October 1993
+\\ \url{http://journals.aps.org/prd/pdf/10.1103/PhysRevD.48.3513}
+
+\bibitem{0711.2593}
+Chiara Caprini, Ruth Durrer and Geraldine Servant.
+\\ Gravitational wave generation from bubble collisions in first-order phase transitions: an analytic approach, 2007,
+\\ Phys.Rev.D77:124015,2008;
+\\ arXiv:0711.2593.
+\\ DOI: 10.1103/PhysRevD.77.124015.
+
+\bibitem{0909.0622}
+Chiara Caprini, Ruth Durrer and Geraldine Servant.
+\\ The stochastic gravitational wave background from turbulence and magnetic fields generated by a first-order phase transition, 2009,
+\\ JCAP 0912:024,2009;
+\\ arXiv:0909.0622.
+\\ DOI: 10.1088/1475-7516/2009/12/024.
+
+\bibitem{0901.1661}
+Chiara Caprini, Ruth Durrer, Thomas Konstandin and Geraldine Servant.
+\\ General Properties of the Gravitational Wave Spectrum from Phase Transitions, 2009,
+\\ Phys.Rev.D79:083519,2009;
+\\ arXiv:0901.1661.
+\\ DOI: 10.1103/PhysRevD.79.083519.
+
+\bibitem{hep-th/0410222}
+Thibault Damour and Alexander Vilenkin.
+\\ Gravitational radiation from cosmic (super)strings: bursts, stochastic background, and observational windows, 2004,
+\\ Phys.Rev. D71 (2005) 063510;
+\\ arXiv:hep-th/0410222.
+\\ DOI: 10.1103/PhysRevD.71.063510.
+
+\bibitem{1106.5795}
+Pablo A. Rosado.
+\\ Gravitational wave background from binary systems, 2011,
+\\ Physical Review D 84, 084004 (2011);
+\\ arXiv:1106.5795.
+\\ DOI: 10.1103/PhysRevD.84.084004.
+
+\bibitem{astro-ph/0507028}
+J. C. N. de Araujo and O. D. Miranda.
+\\ Star formation rate density and the stochastic background of gravitational waves, 2005,
+\\ Phys.Rev.D71:127503,2005;
+\\ arXiv:astro-ph/0507028.
+\\ DOI: 10.1103/PhysRevD.71.127503.
+
+
+
+
+\end{thebibliography}
+\end{document}
