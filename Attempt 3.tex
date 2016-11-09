@@ -114,7 +114,7 @@ z_{max} &:& \textrm{Maximum Observable Redshift} \nonumber
 $R_V(z)$ is determined by observations of gravitational wave sources and is thus not well defined, given the small number of sources so far observed. For the sake of this paper we will be using the formula for $R_V(z)$ described in \cite{1602.04531}. $E[\Omega_M, \Omega_{\Lambda}, z]$ and $z_{max}$ are defined in \cite{1112.1898}. 
 
 \begin{eqnarray}
-R_V(z) &=&  0.015\frac{(1+z)^{2.7}}{1 + [\frac{1+z}{2.9}]^{5.6}} \frac{M_{\odot}}{Mpc^3yr} \nonumber \\
+R_V(z) &=&  0.015~\frac{(1+z)^{2.7}}{1 + [\frac{1+z}{2.9}]^{5.6}} \frac{M_{\odot}}{Mpc^3yr} \nonumber \\
 E[\Omega_M, \Omega_{\Lambda}, z] &=& \sqrt{\Omega_M (1+z^3) + \Omega_{\Lambda}} \nonumber \\
 z_{max} &=& 6 \nonumber 
 \end{eqnarray}
@@ -122,14 +122,44 @@ z_{max} &=& 6 \nonumber
 This allows us to describe Equation \ref{eq:redshift} in detail. 
 
 {\scriptsize
-\beq
+\begin{eqnarray}
 Z(z_{max}) = \int_{0}^{z_{max}}\frac{0.015(1+z)^{2.37}}{\sqrt{0.7+0.3(1+z)^3}(1+\frac{(1+z)^{5.6}}{2.9})}
-\eeq}
-\beq
+\nonumber
+\end{eqnarray}}
+\begin{eqnarray}
 Z(6) = 0.100218 \nonumber
-\eeq
+\end{eqnarray}
 
-This brings up the question of what Equation \ref{eq:redshift} means. $Z(6)$ is a unitless normalization constant describing the total quantity of unresolvable signals detected from all space within the $z$~=~6 redshift ALIGO can currently observe. We can use this to construct a probability distribution function of the unresolveable sources within $z$~=~6 by taking the integrand of Equation \ref{eq:redshift}, which we normalize by dividing it by $Z(6)$.
+This brings up the question of what Equation \ref{eq:redshift} means. $Z(6)$ is a unitless normalization constant describing the total quantity of background sources detected from all space within the $z$~=~6 redshift ALIGO can currently observe. We can use this to construct a probability distribution function of the background sources within $z$~=~6 by taking the integrand of Equation \ref{eq:redshift}, which we normalize by dividing it by $Z(6)$.
+
+{\footnotesize
+\beq
+PDF(z) = \frac{0.149674~(1+z)^{2.37}}{\sqrt{0.7+0.3(1+z)^3}(1+\frac{(1+z)^{5.6}}{2.9})}
+\label{eq:PDF}
+\eeq}
+
+\begin{figure}[!h!t]
+	\centering
+	\includegraphics[width=3in]{PDF.pdf}
+	\caption{PDF(z): Equation \ref{eq:PDF}}
+	\label{fig:PDF}
+\end{figure} 
+
+Equation \ref{eq:PDF} can then be integrated from 0 to 6 to to find the cumulative distribution function of background sources with respect to $z$. In layman's terms, that's the fraction of background sources one can see within a given redshift $z$. 
+
+{\scriptsize
+\beq
+CDF(z) = \int_{0}^{z}\frac{0.149674~(1+z)^{2.37}}{\sqrt{0.7+0.3(1+z)^3}(1+\frac{(1+z)^{5.6}}{2.9})}
+\label{eq:CDF}
+\eeq}
+
+\begin{figure}[!h!t]
+	\centering
+	\includegraphics[width=3in]{CDF.pdf}
+	\caption{CDF(z): Equation \ref{eq:CDF}}
+	\label{fig:CDF}
+\end{figure} 
+
 
 
 \begin{thebibliography}{1}
