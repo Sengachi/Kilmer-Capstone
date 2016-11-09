@@ -15,7 +15,7 @@
 %
 \title{Week 1 - Outline}
 \author{Thomas Kilmer}
-\date{27 Oct 2016}
+\date{8 Nov 2016}
 %
 %
 \begin{document}
@@ -73,7 +73,7 @@ Determining what fraction of one's data one is sacrificing when using signal del
 
 {\tiny
 \beq
-\Omega_{g \omega}(f) = \frac{8 \lambda (\pi G M_c)^{5/3}}{9 H_0^3 c^2} f^{2/3} \int_{z_{min}}^{z_{max}} \frac{R_V(z) dz}{(1+z)^{1/3} E[\Omega_M, \Omega_{\Lambda}, z]}
+\Omega_{g \omega}(f) = \frac{8 \lambda (\pi G M_c)^{5/3}}{9 H_0^3 c^2} f^{2/3} \int_{0}^{z_{max}} \frac{R_V(z) dz}{(1+z)^{1/3} E[\Omega_M, \Omega_{\Lambda}, z]}
 \label{eq:signal_density} 
 \eeq
 }{\footnotesize
@@ -89,13 +89,47 @@ For now let's split $\Omega_{gw}$ into its constant terms, frequency dependent t
 
 \begin{eqnarray}
 \Omega_{gw}(f) &=& C~F(f)~Z(z_{max}) \\
-C &=&  \frac{8 \lambda (\pi G)^{5/3}}{9 H_0^3 c^2} \\
-F(f) &=& M_c^{5/3} f^{2/3} \\
-Z(z_{max}) &=& \int_{z_{min}}^{z_{max}} \frac{R_V(z) dz}{(1+z)^{1/3} E[\Omega_M, \Omega_{\Lambda}, z]} \\
+C &=&  \frac{8 \lambda (\pi G)^{5/3}}{9 H_0^3 c^2} 
+\label{eq:constants}\\
+F(f) &=& M_c^{5/3} f^{2/3} 
+\label{eq:frequency}\\
 \nonumber
 \end{eqnarray}
+{\small\beq
+Z(z_{max}) = \int_{0}^{z_{max}}\frac{R_V(z) dz}{(1+z)^{1/3} E[\Omega_M, \Omega_{\Lambda}, z]} 
+\label{eq:redshift}
+\eeq}
 
+Let us start with Equation \ref{eq:redshift}. $Z(z_{max})$ can be split into three parts and one telescope-dependent term, $z_{max}$.
 
+\small{
+\begin{eqnarray}
+R_V(z) &:& \textrm{Observed Rate of Binary Coalesence} \nonumber \\
+E[\Omega_M, \Omega_{\Lambda}, z] &:& \textrm{z-Dependence of Comoving Volume} \nonumber \\
+(1+z)^{1/3} &:& \textrm{Comoving Volume Factor} \nonumber \\
+z_{max} &:& \textrm{Maximum Observable Redshift} \nonumber
+\nonumber
+\end{eqnarray}}
+
+$R_V(z)$ is determined by observations of gravitational wave sources and is thus not well defined, given the small number of sources so far observed. For the sake of this paper we will be using the formula for $R_V(z)$ described in \cite{1602.04531}. $E[\Omega_M, \Omega_{\Lambda}, z]$ and $z_{max}$ are defined in \cite{1112.1898}. 
+
+\begin{eqnarray}
+R_V(z) &=&  0.015\frac{(1+z)^{2.7}}{1 + [\frac{1+z}{2.9}]^{5.6}} \frac{M_{\odot}}{Mpc^3yr} \nonumber \\
+E[\Omega_M, \Omega_{\Lambda}, z] &=& \sqrt{\Omega_M (1+z^3) + \Omega_{\Lambda}} \nonumber \\
+z_{max} &=& 6 \nonumber 
+\end{eqnarray}
+
+This allows us to describe Equation \ref{eq:redshift} in detail. 
+
+{\scriptsize
+\beq
+Z(z_{max}) = \int_{0}^{z_{max}}\frac{0.015(1+z)^{2.37}}{\sqrt{0.7+0.3(1+z)^3}(1+\frac{(1+z)^{5.6}}{2.9})}
+\eeq}
+\beq
+Z(6) = 0.100218 \nonumber
+\eeq
+
+This brings up the question of what Equation \ref{eq:redshift} means. $Z(6)$ is a unitless normalization constant describing the total quantity of unresolvable signals detected from all space within the $z$~=~6 redshift ALIGO can currently observe. We can use this to construct a probability distribution function of the unresolveable sources within $z$~=~6 by taking the integrand of Equation \ref{eq:redshift}, which we normalize by dividing it by $Z(6)$.
 
 
 \begin{thebibliography}{1}
