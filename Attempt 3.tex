@@ -12,6 +12,7 @@
 \usepackage{epsfig}
 \usepackage{url}
 \usepackage{cuted}
+\usepackage{appendix}
 %
 \title{Week 1 - Outline}
 \author{Thomas Kilmer}
@@ -32,11 +33,11 @@
 
 \section*{Introduction}
 
-Advanced LIGO recently detected gravitational waves from a binary black hole merger \cite{1602.03837}. While estimates for the number of coalescing binary black holes in the universe are imprecise, there are many such binaries \cite{0912.1074}. This large number of binary black holes produces overlapping, incoherent signals which form a ``background'' of gravitational waves \cite{1604.02513}. This background is statistically homogeneous and isotropic, despite the discrete nature of the sources which make it up \cite{1604.02513}. With current advances in gravitational wave detection this background will be measured within the next few years \cite{1604.02513}.
+Advanced LIGO recently detected gravitational waves from a binary black hole merger~\cite{1602.03837}. While estimates for the number of coalescing binary black holes in the universe are imprecise, there are many such binaries~\cite{0912.1074}. This large number of binary black holes produces overlapping, incoherent signals which form a ``background'' of gravitational waves~\cite{1604.02513}. This background is statistically homogeneous and isotropic, despite the discrete nature of the sources which make it up~\cite{1604.02513}. With current advances in gravitational wave detection this background will be measured within the next few years~\cite{1604.02513}.
 
-Binary black holes are not the only thing which contribute to the gravitational wave background. A number of other astrophysical sources contribute to the background including rotating neutron stars \cite{1206.1330}, neutron star phase transitions \cite{Marranghello}, instabilities in young neutron stars \cite{1106.2736}, and core collapse supernovae \cite{astro-ph/0412277}. There are also cosmological sources which contribute to the gravitational wave background including pre-Big Bang cosmological factors \cite{hep-th/9211021} \cite{hep-th/9701146} \cite{1006.0217}, the amplification of weak gravitational waves (including vacuum fluctuations) during inflation \cite{Grishchuk1} \cite{Grishchuk2}, phase transitions in the early universe \cite{0711.2593} \cite{0909.0622} \cite{0901.1661}, and cosmic strings \cite{hep-th/0410222}. The analysis of gravitational waves produced by the aforementioned cosmological sources could provide insight into the early processes of the universe.
+Binary black holes are not the only thing which contribute to the gravitational wave background. A number of other astrophysical sources contribute to the background including rotating neutron stars~\cite{1206.1330}, neutron star phase transitions~\cite{Marranghello}, instabilities in young neutron stars~\cite{1106.2736}, and core collapse supernovae~\cite{astro-ph/0412277}. There are also cosmological sources which contribute to the gravitational wave background including pre-Big Bang cosmological factors~\cite{hep-th/9211021}~\cite{hep-th/9701146}~\cite{1006.0217}, the amplification of weak gravitational waves (including vacuum fluctuations) during inflation~\cite{Grishchuk1}~\cite{Grishchuk2}, phase transitions in the early universe~\cite{0711.2593}~\cite{0909.0622}~\cite{0901.1661}, and cosmic strings~\cite{hep-th/0410222}. The analysis of gravitational waves produced by the aforementioned cosmological sources could provide insight into the early processes of the universe.
 
-However the analysis of the gravitational wave background produced by cosmological sources is complicated by the inability to separate it from the gravitational wave background produced by astrophysical sources \cite{1604.02513}. The goal of this project is to develop tools for separating the cosmological and astrophysical backgrounds to ease the analysis of the cosmological background. More specifically we aim to develop tools for resolving binary black holes.
+However the analysis of the gravitational wave background produced by cosmological sources is complicated by the inability to separate it from the gravitational wave background produced by astrophysical sources~\cite{1604.02513}. The goal of this project is to develop tools for separating the cosmological and astrophysical backgrounds to ease the analysis of the cosmological background. More specifically we aim to develop tools for resolving binary black holes.
 
 \section*{Signal Subtraction}
 
@@ -44,22 +45,21 @@ However the analysis of the gravitational wave background produced by cosmologic
 
 Resolving a binary black hole means identifying enough key characteristics of the binary (mass, orientation, location) that one can create a simulation of the gravitational wave signal produced by the binary at any given time. This simulated signal can then be subtracted from total gravitational wave background, leaving a reduced background which is the produced a fraction less by astrophysical sources and a fraction more by cosmological sources. 
 
-No technique will be able to resolve all sources, particularly more distant sources \cite{1604.02513}, as their distance makes it difficult to determine their exact location. This means that the binary black hole background consists of a resolvable background and an unresolvable background \cite{1106.5795}. The success of a technique used to resolve sources can be quantified by what fraction of the background it can resolve and subsequently subtract. That is, a good technique has a small $\lambda$ (Equation \ref{eqn:lambda}). 
+No technique will be able to resolve all sources, particularly more distant sources~\cite{1604.02513}, as their distance makes it difficult to determine their exact location. This means that the binary black hole background consists of a resolvable background and an unresolvable background~\cite{1106.5795}. The success of a technique used to resolve sources can be quantified by what fraction of the background it can resolve and subsequently subtract. That is, a good technique has a small $\lambda$ (Equation~\ref{eq:lambda}). 
 
 \begin{eqnarray}
-\lambda(f) &=& \frac{\Omega_{gw,u}(f)}{\Omega_{gw,u}(f)+\Omega_{gw,r}(f)} 
-\label{eqn:lambda} \\
-\Omega_{gw,u}(f) &:& \textrm{Unresolvable~Signal} \nonumber \\
-\Omega_{gw,r}(f) &:& \textrm{Resolvable~Signal} \nonumber \\
-f &:& \textrm{Signal Frequency} \nonumber
+\lambda &=& \frac{\Omega_{gw,u}}{\Omega_{gw,u}+\Omega_{gw,r}} 
+\label{eq:lambda} \\
+\Omega_{gw,u} &:& \textrm{Unresolvable~Signal} \nonumber \\
+\Omega_{gw,r} &:& \textrm{Resolvable~Signal} \nonumber
 \end{eqnarray}
 
-Signal subtraction has a complication though. The above equation for $\lambda$ assumes that the simulated signal perfectly matches the actual signal of the resolved source, that there is no residual post-subtraction. This is not a reasonable assumption to make. All of our resolved sources will have imperfectly determined parameters and all of our simulated signals will further suffer from imperfect inspiral models. This means that each subtraction will create a residual in our post-subtraction data that will act as an unresolved signal. A more appropriate definition for the $\lambda$ of signal subtraction includes a residual term (Equation \ref{eqn:lambda_R}.
+Signal subtraction has a complication though. The above Equation~for $\lambda$ assumes that the simulated signal perfectly matches the actual signal of the resolved source, that there is no residual post-subtraction. This is not a reasonable assumption to make. All of our resolved sources will have imperfectly determined parameters and all of our simulated signals will further suffer from imperfect inspiral models. This means that each subtraction will create a residual in our post-subtraction data that will act as an unresolved signal. A more appropriate definition for the $\lambda$ of signal subtraction includes a residual term (Equation~\ref{eq:lambda_R}.
 
 \begin{eqnarray}
-\lambda(f) &=& \frac{\Omega_{gw,u}(f) + R*\Omega_{gw,r}(f)}{\Omega_{gw,u}(f)+\Omega_{gw,r}(f)} \label{eqn:lambda_R} \\
-\Omega_{gw,u}(f) &:& \textrm{Unresolvable~Signal} \nonumber \\
-\Omega_{gw,r}(f) &:& \textrm{Resolvable~Signal} \nonumber \\
+\lambda &=& \frac{\Omega_{gw,u} + R*\Omega_{gw,r}}{\Omega_{gw,u}+\Omega_{gw,r}} \label{eq:lambda_R} \\
+\Omega_{gw,u} &:& \textrm{Unresolvable~Signal} \nonumber \\
+\Omega_{gw,r} &:& \textrm{Resolvable~Signal} \nonumber \\
 R &:& \textrm{Subtraction~Residual~Term} \nonumber
 \end{eqnarray}
 
@@ -67,13 +67,13 @@ $R$ is a particularly complicated term. !!!Unfinished!!!
 
 \section*{Signal Deletion}
 
-Signal deletion is similar to signal subtraction, but instead of using simulation and subtraction to remove signals one simply deletes all data that contains a resolvable signal. This has the advantage of not creating a residual, for signal deletion Equation 1 really is a perfectly appropriate way to describe $\lambda$. Signal deletion has a serious disadvantage though: it reduces the amount of data one has to work with. In fact when working with data that has at least one resolvable signal at any given time signal deletion leaves one with no data to work with at all. 
+Signal deletion is similar to signal subtraction, but instead of using simulation and subtraction to remove signals one simply deletes all data that contains a resolvable signal. This has the advantage of not creating a residual, for signal deletion Equation~1 really is a perfectly appropriate way to describe $\lambda$. Signal deletion has a serious disadvantage though: it reduces the amount of data one has to work with. In fact when working with data that has at least one resolvable signal at any given time signal deletion leaves one with no data to work with at all. 
 
-Determining what fraction of one's data one is sacrificing when using signal deletion is difficult. To do so let us begin with the signal density for gravitational waves as described in \cite{1112.1898} (Equation \ref{eq:signal_density}).
+Determining what fraction of one's data one is sacrificing when using signal deletion is difficult. To do so let us begin with the signal density for gravitational waves as described in~\cite{1112.1898} (Equation~\ref{eq:signal_density}).
 
 {\tiny
 \beq
-\Omega_{g \omega}(f) = \frac{8 \lambda (\pi G M_c)^{5/3}}{9 H_0^3 c^2} f^{2/3} \int_{0}^{z_{max}} \frac{R_V(z) dz}{(1+z)^{1/3} E[\Omega_M, \Omega_{\Lambda}, z]}
+\Omega_{g \omega}(f) = \frac{8 \lambda (\pi G M_c)^{5/3}}{9 H_0^3 c^2} f^{2/3} \int_{0}^{z_{max}} \frac{R_V(z)~dz}{(1+z)^{1/3} E[\Omega_M, \Omega_{\Lambda}, z]}
 \label{eq:signal_density} 
 \eeq
 }{\footnotesize
@@ -95,17 +95,17 @@ F(f) &=& M_c^{5/3} f^{2/3}
 \label{eq:frequency}
 \end{eqnarray}
 {\small\beq
-Z(z_{max}) = \int_{0}^{z_{max}}\frac{R_V(z) dz}{(1+z)^{1/3} E[\Omega_M, \Omega_{\Lambda}, z]} 
+Z(z_{max}) = \int_{0}^{z_{max}}\frac{R_V(z)~dz}{(1+z)^{1/3} E[\Omega_M, \Omega_{\Lambda}, z]} 
 \label{eq:redshift}
 \eeq}
 
-Let us start by analyzing Equation \ref{eq:frequency}. Signal length is frequency dependent so the nature of Equation \ref{eq:frequency} is very important in determining the efficacy of signal deletion. 
+Let us start by analyzing Equation~\ref{eq:frequency}. Signal length is frequency dependent so the nature of Equation~\ref{eq:frequency} is very important in determining the efficacy of signal deletion. 
 
 \section*{Signal Subtraction}
 
 !!!Need Introduction Here, Need To Combine With Other Section!!!
 
-Now let us consider Equation \ref{eq:redshift}. $Z(z_{max})$ can be split into three parts and one telescope-dependent term, $z_{max}$.
+Now let us consider Equation~\ref{eq:redshift}. $Z(z_{max})$ can be split into three parts and one telescope-dependent term, $z_{max}$.
 
 {\footnotesize
 \begin{eqnarray}
@@ -116,7 +116,7 @@ z_{max} &:& \textrm{Most Distant Coalescing Binaries} \nonumber
 \nonumber
 \end{eqnarray}}
 
-$R_V(z)$ is determined by observations of gravitational wave sources and is thus not well defined, given the small number of sources so far observed. For the sake of this paper we will be using the formula for $R_V(z)$ described in \cite{1602.04531}. $E[\Omega_M, \Omega_{\Lambda}, z]$ and $z_{max}$ are defined in \cite{1112.1898}. 
+$R_V(z)$ is determined by observations of gravitational wave sources and is thus not well defined, given the small number of sources so far observed. For the sake of this paper we will be using the formula for $R_V(z)$ described in~\cite{1602.04531}. $E[\Omega_M, \Omega_{\Lambda}, z]$ and $z_{max}$ are defined in~\cite{1112.1898}. 
 
 \begin{eqnarray}
 R_V(z) &=&  0.015~\frac{(1+z)^{2.7}}{1 + [\frac{1+z}{2.9}]^{5.6}} \frac{M_{\odot}}{Mpc^3yr} \nonumber \\
@@ -124,18 +124,18 @@ E[\Omega_M, \Omega_{\Lambda}, z] &=& \sqrt{\Omega_M (1+z^3) + \Omega_{\Lambda}} 
 z_{max} &=& 6 \nonumber 
 \end{eqnarray}
 
-Using standard $\Lambda$CDM cosmology's values of $\Omega_M$~=~0.3 and $\Omega_{\Lambda}$~=~0.7 this allows us to describe Equation \ref{eq:redshift} in detail. 
+Using standard $\Lambda$CDM cosmology's values of $\Omega_M$~=~0.3 and $\Omega_{\Lambda}$~=~0.7 this allows us to describe Equation~\ref{eq:redshift} in detail. 
 
 {\scriptsize
 \begin{eqnarray}
-Z(z_{max}) = \int_{0}^{z_{max}}\frac{0.015(1+z)^{2.37}}{\sqrt{0.7+0.3(1+z)^3}(1+\frac{(1+z)^{5.6}}{2.9})}
+Z(z_{max}) = \int_{0}^{z_{max}}\frac{0.015(1+z)^{2.37}~dz}{\sqrt{0.7+0.3(1+z)^3}(1+\frac{(1+z)^{5.6}}{2.9})}
 \nonumber
 \end{eqnarray}}
 \begin{eqnarray}
 Z(6) = 0.100218 \nonumber
 \end{eqnarray}
 
-This brings up the question of what Equation \ref{eq:redshift} means. $Z(6)$ is a unitless normalization constant describing the total quantity of background sources detected from all space within the $z$~=~6 redshift ALIGO can currently observe. We can use this to construct a probability distribution function of the background sources within $z$~=~6 by taking the integrand of Equation \ref{eq:redshift}, which we normalize by dividing it by $Z(6)$.
+This brings up the question of what Equation~\ref{eq:redshift} means. $Z(6)$ is a unitless normalization constant describing the total quantity of background sources detected from all space within the $z$~=~6 redshift ALIGO can currently observe. We can use this to construct a probability distribution function of the background sources within $z$~=~6 by taking the integrand of Equation~\ref{eq:redshift}, which we normalize by dividing it by $Z(6)$.
 
 {\footnotesize
 \beq
@@ -146,26 +146,120 @@ PDF(z) = \frac{0.149674~(1+z)^{2.37}}{\sqrt{0.7+0.3(1+z)^3}(1+\frac{(1+z)^{5.6}}
 \begin{figure}[!h!t]
 	\centering
 	\includegraphics[width=3in]{PDF.pdf}
-	\caption{PDF(z): Equation \ref{eq:PDF}}
+	\caption{$PDF(z)$ - Equation~\ref{eq:PDF}}
 	\label{fig:PDF}
 \end{figure} 
 
-Equation \ref{eq:PDF} can then be integrated from 0 to 6 to to find the cumulative distribution function of background sources with respect to $z$. In layman's terms, that's the fraction of background sources one can see within a given redshift $z$. 
+Equation~\ref{eq:PDF} can then be integrated from 0 to 6 to to find the cumulative distribution function of background sources with respect to $z$. In layman's terms, that's the fraction of background sources one can see within a given redshift $z$. 
 
 {\scriptsize
 \beq
-CDF(z) = \int_{0}^{z}\frac{0.149674~(1+z)^{2.37}}{\sqrt{0.7+0.3(1+z)^3}(1+\frac{(1+z)^{5.6}}{2.9})}
+CDF(z) = \int_{0}^{z}\frac{0.149674~(1+z)^{2.37}~dz}{\sqrt{0.7+0.3(1+z)^3}(1+\frac{(1+z)^{5.6}}{2.9})}
 \label{eq:CDF}
 \eeq}
 
 \begin{figure}[!h!t]
 	\centering
 	\includegraphics[width=3in]{CDF.pdf}
-	\caption{CDF(z): Equation \ref{eq:CDF}}
+	\caption{$CDF(z)$ - Equation~\ref{eq:CDF}}
 	\label{fig:CDF}
 \end{figure} 
 
+To this we can apply the function $P_{ok}(\frac{d_{L}(z)}{D_{h}(M_c)})$ (Equation~\ref{eq:Pok}), where multiplying Equation~\ref{eq:PDF} by $P_{ok}$ gives us the distribution of resolvable sources with respect to redshift (Equation~\ref{eq:PDF_mass}). However to do so we need $P_{ok}$ as a function of redshift ($z$), chirp mass ($M_c$), and $D_{r}$ (Equation~\ref{eq:Pok}). $P_{ok}(z, M_c,D_{r})$ is solved for in Appendix A. (Note that $D_R$ is a telescope parameter, something which varies based on the gravitational wave telescope in question). 
 
+{\small
+\begin{eqnarray}
+P_{ok} &:& \textrm{Source-Detector Angle Comparator} \nonumber \\
+d_{L}(z) &:& \textrm{!!!} \nonumber \\
+D_{h}(M_c) &=& D_{r} (\frac{M_c}{1.2})^{5/6} \nonumber \\
+D_{r} &:& \textrm{Resolvable Distance for a 1 $M_{\odot}$ Source} \nonumber \\
+\label{eq:Pok}
+\end{eqnarray}}
+
+{\tiny
+\beq
+PDF_{r}(z,M_c,D_{r}) = \frac{0.149674~(1+z)^{2.37}P_{ok}(z,M_c,D_{r})}{\sqrt{0.7+0.3(1+z)^3}(1+\frac{(1+z)^{5.6}}{2.9})}
+\label{eq:PDF_mass}
+\eeq}
+
+As an example, let us compare Equation~\ref{eq:PDF} to Equation~\ref{eq:PDF_mass} for 10 and 50~$M_{\odot}$ where $D_{r}$~=~440~Mpc, which is the $D_R$ value for ALIGO.
+
+\begin{figure}[!h!t]
+	\centering
+	\includegraphics[width=3in]{PDF10.pdf}
+	\caption{\footnotesize$PDF_{r}(z,10M_{\odot},440Mpc)$ - Eq.~\ref{eq:PDF} \& Eq.~\ref{eq:PDF_mass}}
+	\label{fig:PDF10}
+\end{figure} 
+
+\begin{figure}[!h!t]
+	\centering
+	\includegraphics[width=3in]{PDF50.pdf}
+	\caption{\footnotesize$PDF_{r}(z,50M_{\odot},440Mpc)$ - Eq.~\ref{eq:PDF} \& Eq.~\ref{eq:PDF_mass}}
+	\label{fig:PDF50}
+\end{figure} 
+
+Now if we had a mass distribution for our observed sources we would be able to do better than simply generating resolvable source distributions for individual chirp masses, we'd be able to integrate our resolvable distribution over the mass distribution to find a relationship that describes the resolvable source distribution in general. The problem with this is that the mass distribution of sources is unknown~\cite{1}. We can approximate the mass distribution as $\frac{1}{M_c^2}$ though~\cite{1}, and assume that source masses fall between 10 and 50~$M_{\odot}$~\cite{1}. This gives us Equation~\ref{eq:PDF_res}, shown in Figure \ref{fig:PDF_res}.
+
+{\tiny
+\beq
+PDF_{r}(z,D_r) = \int_{10M_{\odot}}^{50M_{\odot}}\frac{0.149674~(1+z)^{2.37}P_{ok}(z,M_c,D_r)~dm}{\sqrt{0.7+0.3(1+z)^3}(1+\frac{(1+z)^{5.6}}{2.9})M_c^2}
+\label{eq:PDF_res}
+\eeq}
+
+\begin{figure}[!h!t]
+	\centering
+	\includegraphics[width=3in]{PDF_res.pdf}
+	\caption{$PDF_{r}(z,440Mpc)$ - Eq.~\ref{eq:PDF} \& Eq.~\ref{eq:PDF_res}}
+	\label{fig:PDF_res}
+\end{figure} 
+
+Just as we did for Equation~\ref{eq:CDF} we can generate a CDF for Equation~\ref{eq:PDF_res} (Equation~\ref{eq:CDF_res}), shown in Figure~\ref{fig:CDF_res}.
+
+\beq
+CDF_{r}(z,D_r) = \int_{0}^{z} PDF_r(z,D_r)~dz
+\label{eq:CDF_res}
+\eeq
+
+\begin{figure}[!h!t]
+	\centering
+	\includegraphics[width=3in]{CDF_res.pdf}
+	\caption{$CDF_{r}(z,440Mpc)$ - Eq.~\ref{eq:CDF} \& Eq.~\ref{eq:CDF_res}}
+	\label{fig:CDF_res}
+\end{figure} 
+
+And now, finally, we can compare Equation~\ref{eq:CDF} and Equation~\ref{eq:CDF_res} to find the fraction of background sources which are resolvable for a given redshift (Equation~\ref{eq:frac}), shown in Figure~\ref{fig:frac}.
+
+\beq
+\frac{CDF_{r}(z,D_r)}{CDF(z,D_r)} \propto \frac{\Omega_{gw,r}}{\Omega_{gw,u} + \Omega_{gw,r}}(z,D_r)
+\label{eq:frac}
+\eeq
+
+\begin{figure}[!h!t]
+	\centering
+	\includegraphics[width=3in]{resolvable.pdf}
+	\caption{$\frac{CDF_{r}(z,440Mpc)}{CDF(z,440Mpc)}$ - Equation~\ref{eq:frac}}
+	\label{fig:frac}
+\end{figure} 
+
+Note the similarity between $\lambda$ (Equation~\ref{eq:lambda}) and Equation~\ref{eq:frac}. If only Equation~\ref{eq:frac} lacked a $z$ dependence we could get part of $\lambda$ solely in terms of $D_r$ by taking 1~-~$\frac{CDF_{r}(D_r)}{CDF(D_r)}$, which equals $\frac{\Omega_{gw,u}}{\Omega_{gw,u} + \Omega_{gw,r}}$. Which is actually trivially easy to accomplish. By simply choosing to subtract all resolvable sources without regard for their redshift, we can set $z$ in $\frac{CDF_{r}(z,D_r)}{CDF(z,D_r)}$ to $z_{max}$~=~6. 
+
+\beq
+\lambda(D_r) \propto \frac{CDF_{r}(6,D_r)}{CDF(6,D_r)}
+\eeq
+
+
+
+
+
+\pagebreak
+\appendix
+\appendixpage
+
+\section*{Appendix A}
+
+!!!How should I list my uses of Dr. O'Shaughnessy's code?!!!
+
+\pagebreak
 
 \begin{thebibliography}{1}
 
