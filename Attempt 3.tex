@@ -35,17 +35,23 @@
 
 Advanced LIGO recently detected gravitational waves from a binary black hole merger~\cite{1602.03837}. While estimates for the number of coalescing binary black holes in the universe are imprecise, there are many such binaries~\cite{0912.1074}. This large number of binary black holes produces overlapping, incoherent signals which form a ``background'' of gravitational waves~\cite{1604.02513}. This background is statistically homogeneous and isotropic, despite the discrete nature of the sources which make it up~\cite{1604.02513}. With current advances in gravitational wave detection this background will be measured within the next few years~\cite{1604.02513}.
 
+!!! Insert description of background here. !!!
+
 Binary black holes are not the only thing which contribute to the gravitational wave background. A number of other astrophysical sources contribute to the background including rotating neutron stars~\cite{1206.1330}, neutron star phase transitions~\cite{Marranghello}, instabilities in young neutron stars~\cite{1106.2736}, and core collapse supernovae~\cite{astro-ph/0412277}. There are also cosmological sources which contribute to the gravitational wave background including pre-Big Bang cosmological factors~\cite{hep-th/9211021}~\cite{hep-th/9701146}~\cite{1006.0217}, the amplification of weak gravitational waves (including vacuum fluctuations) during inflation~\cite{Grishchuk1}~\cite{Grishchuk2}, phase transitions in the early universe~\cite{0711.2593}~\cite{0909.0622}~\cite{0901.1661}, and cosmic strings~\cite{hep-th/0410222}. The analysis of gravitational waves produced by the aforementioned cosmological sources could provide insight into the early processes of the universe.
 
-However the analysis of the gravitational wave background produced by cosmological sources is complicated by the inability to separate it from the gravitational wave background produced by astrophysical sources~\cite{1604.02513}. The goal of this project is to develop tools for separating the cosmological and astrophysical backgrounds to ease the analysis of the cosmological background. More specifically we aim to develop tools for resolving binary black holes.
+However the analysis of the gravitational wave background produced by cosmological sources is complicated by the inability to separate it from the gravitational wave background produced by astrophysical sources~\cite{1604.02513}. The goal of this project is to develop tools for separating the cosmological and astrophysical backgrounds to ease the analysis of the cosmological background. More specifically we aim to develop tools for removing resolved binary black holes.
 
 \section*{Signal Subtraction}
 
 (*Rewrite 'resolving' to better match what we're actually doing, subtraction.*)
 
-Resolving a binary black hole means identifying enough key characteristics of the binary (mass, orientation, location) that one can create a simulation of the gravitational wave signal produced by the binary at any given time. This simulated signal can then be subtracted from total gravitational wave background, leaving a reduced background which is the produced a fraction less by astrophysical sources and a fraction more by cosmological sources. 
+!!!
 
-No technique will be able to resolve all sources, particularly more distant sources~\cite{1604.02513}, as their distance makes it difficult to determine their exact location. This means that the binary black hole background consists of a resolvable background and an unresolvable background~\cite{1106.5795}. The success of a technique used to resolve sources can be quantified by what fraction of the background it can resolve and subsequently subtract. That is, a good technique has a small $\lambda$ (Equation~\ref{eq:lambda}). 
+Resolving a black hole binary means identifying enough key characteristics of the binary (mass, orientation, location) that one can create a simulation of the gravitational wave signal produced by the binary at any given time. This simulated signal can then be subtracted from total gravitational wave background, leaving a reduced background which is the produced a fraction less by astrophysical sources and a fraction more by cosmological sources. 
+
+No technique will be able to resolve all sources, particularly more distant sources~\cite{1604.02513}, as their distance makes it difficult to determine their exact location. This means that the binary black hole background consists of a resolvable foreground and an unresolvable background~\cite{1106.5795}. The success of a technique used to resolve sources can be quantified by what fraction of the background it can resolve and subsequently subtract. That is, a good technique has a small $\lambda$ (Equation~\ref{eq:lambda}). 
+
+!!!
 
 \begin{eqnarray}
 \lambda &=& \frac{\Omega_{gw,u}}{\Omega_{gw,u}+\Omega_{gw,r}} 
@@ -116,7 +122,7 @@ z_{max} &:& \textrm{Most Distant Coalescing Binaries} \nonumber
 \nonumber
 \end{eqnarray}}
 
-$R_V(z)$ is determined by observations of gravitational wave sources and is thus not well defined, given the small number of sources so far observed. For the sake of this paper we will be using the formula for $R_V(z)$ described in~\cite{1602.04531}. $E[\Omega_M, \Omega_{\Lambda}, z]$ and $z_{max}$ are defined in~\cite{1112.1898}. 
+$R_V(z)$ is determined by observations of gravitational wave sources and is thus not well defined, given the small number of sources so far observed. For the sake of this paper we will be using the theoretical formula for $R_V(z)$ described in~\cite{1602.04531}. $E[\Omega_M, \Omega_{\Lambda}, z]$ and $z_{max}$ are defined in~\cite{1112.1898}. 
 
 \begin{eqnarray}
 R_V(z) &=&  0.015~\frac{(1+z)^{2.7}}{1 + [\frac{1+z}{2.9}]^{5.6}} \frac{M_{\odot}}{Mpc^3yr} \nonumber \\
